@@ -9,9 +9,8 @@ var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
 
-var timerSeconds = 60;
+var timerSeconds = 30;
 var intervalId;
-
 
 var questions = {
   q0: {question: "World's tallest steel coaster?",
@@ -108,12 +107,14 @@ var questions = {
 
 //Stuff to run at load time
 
-intervalId = setInterval(countdown, 1000);
+  $(".gameTimer").html(timerSeconds);
 
  //********* Events 
  // Start logic
  $(".startButton").on("click", function() {
  
+    intervalId = setInterval(countdown, 1000);
+
     //update display hero
     $(".startRow").addClass("hide");
 
@@ -139,6 +140,7 @@ intervalId = setInterval(countdown, 1000);
  
 
   // The Done Button - user has finished selecting answers
+  //ASK JEFF ABOUT THIS
 
   $(".triviaList").on("click", ".doneButton", checkAnswers);
 
@@ -196,9 +198,6 @@ function countdown() {
     checkAnswers();
     clearInterval(intervalId);
   }
-
 }
-
-
 
 })  //********** end of document ready
